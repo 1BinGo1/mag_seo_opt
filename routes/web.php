@@ -15,7 +15,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('base');
+});
+
+Route::get('/test', function () {
+    return view('test');
+});
+
+Route::get('/test2', function () {
+    return view('test2');
+});
+
+Route::get('/test3', function () {
+    return view('test3');
+});
+
+Route::get('/test4', function () {
+    return view('test4');
+});
+
+Route::get('/test5', function () {
+    return view('test5');
 });
 
 Route::get('/dashboard', function () {
@@ -27,5 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('load_data', [\App\Http\Controllers\YandexController::class, 'loadData'])->name('yandex_load_data');
 
 require __DIR__.'/auth.php';
