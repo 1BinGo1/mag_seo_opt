@@ -38,6 +38,14 @@ Route::get('/test5', function () {
     return view('test5');
 });
 
+Route::get('/auth_ya', function () {
+    return view('auth_ya');
+});
+
+Route::get('/auth_ya_token', function () {
+    return view('auth_ya_token');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
