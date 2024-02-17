@@ -18,9 +18,14 @@ Route::get('/', function () {
     return view('base');
 });
 
-Route::get('/test', function () {
-    return view('test');
+Route::get('/metric_data', [\App\Http\Controllers\YandexController::class, 'getMetricData'])->name('get_metric_data');
+Route::get('/counters_full', [\App\Http\Controllers\YandexController::class, 'getCountersFull'])->name('get_counters_all');
+Route::get('/counters_short', [\App\Http\Controllers\YandexController::class, 'getCountersShort'])->name('get_counters_short');
+
+Route::get('/cal', function () {
+    return view('cal');
 });
+
 
 Route::get('/test2', function () {
     return view('test2');

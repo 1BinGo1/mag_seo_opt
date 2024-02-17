@@ -211,10 +211,39 @@
             user-select: none; /* Standard */
         }
 
+        #metric_info{
+            position: absolute;
+            display: flex;
+            left: 10px;
+            margin-bottom: 100px;
+            border: 3px solid rgb(103, 21, 158, 0.5);
+            border-radius: 10px ;
+            padding: 10px;
+            background-color: white;
+            width: 1000px;
+            height: 80%;
+        }
+
     </style>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
+
+
+<div id="metric_info">
+    <div id="period_info">
+        <select class="form-select" aria-label="Default select example" id="select_period_info">
+            <option value="today">Сегодня</option>
+            <option value="yesterday">Вчера</option>
+            <option value="week">Неделя</option>
+            <option value="month">Месяц</option>
+        </select>
+    </div>
+    <div id="metric_data_view">
+        <div id="frequently_viewed_pages"></div>
+    </div>
+</div>
 
 
 <div id="cube-container">
@@ -247,6 +276,7 @@
 </div>
 
 <div id="metrics_control">
+
     <div id="metric-buttons">
         <!-- переключения между метриками -->
         <button data-metric="FCP">FCP</button>
@@ -265,14 +295,13 @@
 
     <div style="margin-left: 20px" id="sites_list">
         <select class="form-select" aria-label="Default select example" id="sites_select">
-            <option selected value="site_#1">Site #1</option>
-            <option value="site_#2">Site #2</option>
-            <option value="site_#3">Site #3</option>
+{{--            <option selected value="28352696">Site #1</option>--}}
+{{--            <option value="60742804">Site #2</option>--}}
+{{--            <option value="56741710">Site #3</option>--}}
         </select>
     </div>
 
 </div>
-
 
 <script>
     // ограничение частоты вызова функции
@@ -367,25 +396,27 @@
         var rotateInterval;
         var sites_select = document.getElementById('sites_select');
 
-        sites_select.addEventListener('change',function(){
-            //createCells();
-            let sites_list_value = document.getElementById('sites_select').value.trim();
-            loadData(sites_list_value);
-        });
-
-        metrics.forEach(el => el.addEventListener('dragstart', event => {
-            autoRotate = false;
-            clearInterval(rotateInterval);
-        }));
-
-        metrics.forEach(el => el.addEventListener('dragend', event => {
-            autoRotate = true;
-            rotateInterval = setInterval(function () {
-                rotY += 0.5;
-                rotX += 0.5;
-                cube.style.transform = 'rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg)';
-            }, 30);
-        }));
+        function loadCounters(){
+            $.ajax({
+                type: "get",
+                url: "http://localhost:8000/counters_short",
+                success: function(data) {
+                    if (data['data'].length > 0){
+                        for (let i = 0; i < data['data'].length; i++){
+                            let option = document.createElement('option');
+                            option.value = data['data'][i]['id'];
+                            option.textContent = data['data'][i]['site'];
+                            if (i === 0){
+                                option.setAttribute('selected', true);
+                            }
+                            sites_select.appendChild(option);
+                        }
+                        loadData(sites_select.value.trim());
+                        getMetricData(sites_select.value.trim());
+                    }
+                }
+            });
+        }
 
         function loadData(site = ''){
             $.ajax({
@@ -520,7 +551,50 @@
             });
         }
 
-        loadData(document.getElementById('sites_select').value.trim());
+        function getMetricData(site = ''){
+            let date1 = '2024-01-01';
+            let date2 = '2024-02-01';
+            $.ajax({
+                type: "get",
+                url: "http://localhost:8000/metric_data",
+                data : {
+                    site: site,
+                    date1: date1,
+                    date2: date2
+                },
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+        }
+
+        loadCounters();
+
+        sites_select.addEventListener('change',function(){
+            let sites_list_value = sites_select.value.trim();
+            let options = sites_select.querySelectorAll('option');
+            options.forEach((option, index) => {
+                option.removeAttribute('selected');
+                if (option.value === sites_list_value){
+                    option.setAttribute('selected', true);
+                }
+            });
+            loadData(sites_list_value);
+        });
+
+        metrics.forEach(el => el.addEventListener('dragstart', event => {
+            autoRotate = false;
+            clearInterval(rotateInterval);
+        }));
+
+        metrics.forEach(el => el.addEventListener('dragend', event => {
+            autoRotate = true;
+            rotateInterval = setInterval(function () {
+                rotY += 0.5;
+                rotX += 0.5;
+                cube.style.transform = 'rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg)';
+            }, 30);
+        }));
 
         function editData(metric){
             let face = document.getElementById('cube').querySelector(`[data-metric="${metric}"]`);
@@ -1009,15 +1083,12 @@
                 e.preventDefault();
             });
         });
+
     });
 
 </script>
 
-<script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous">
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 </body>

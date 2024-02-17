@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use GuzzleHttp\Client as GuzzleClient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Siberfx\YandexMetrika\YandexMetrika;
 
 class YandexController extends Controller
 {
+    protected static $yandexMetrikaObject = null;
+    protected $urlManagement = 'https://api-metrika.yandex.net/stat/v1/data';
+
     public function loadData() {
         if (empty($_GET['site'])){
             return response()->json([
@@ -13,7 +20,7 @@ class YandexController extends Controller
             ]);
         }
         else{
-            if ($_GET['site'] == "site_#1"){
+            if ($_GET['site'] == "28352696"){
                 return response()->json([
                     "LCP" => [
                         "0" => "site#1_lcp_1",
@@ -105,7 +112,7 @@ class YandexController extends Controller
                     ]
                 ]);
             }
-            if ($_GET['site'] == "site_#2"){
+            if ($_GET['site'] == "60742804"){
                 return response()->json([
                     "LCP" => [
                         "0" => "site#2_lcp_1",
@@ -197,7 +204,7 @@ class YandexController extends Controller
                     ]
                 ]);
             }
-            if ($_GET['site'] == "site_#3"){
+            if ($_GET['site'] == "56741710"){
                 return response()->json([
                     "LCP" => [
                         "0" => "site#3_lcp_1",
@@ -290,5 +297,153 @@ class YandexController extends Controller
                 ]);
             }
         }
+        return response()->json([
+            "LCP" => [
+                "0" => "test",
+                "1" => "test",
+                "2" => "test",
+                "3" => "test",
+                "4" => "test",
+                "5" => "test",
+                "6" => "test",
+                "7" => "test",
+                "8" => "test"
+            ],
+            "FCP" => [
+                "0" => "test",
+                "1" => "test",
+                "2" => "test",
+                "3" => "test",
+                "4" => "test",
+                "5" => "test",
+                "6" => "test",
+                "7" => "test",
+                "8" => "test"
+            ],
+            "CLS" => [
+                "0" => "test",
+                "1" => "test",
+                "2" => "test",
+                "3" => "test",
+                "4" => "test",
+                "5" => "test",
+                "6" => "test",
+                "7" => "test",
+                "8" => "test"
+            ],
+            "SI" => [
+                "0" => "test",
+                "1" => "test",
+                "2" => "test",
+                "3" => "test",
+                "4" => "test",
+                "5" => "test",
+                "6" => "test",
+                "7" => "test",
+                "8" => "test"
+            ],
+            "TBT" => [
+                "0" => "test",
+                "1" => "test",
+                "2" => "test",
+                "3" => "test",
+                "4" => "test",
+                "5" => "test",
+                "6" => "test",
+                "7" => "test",
+                "8" => "test"
+            ],
+            "FID" => [
+                "0" => "test",
+                "1" => "test",
+                "2" => "test",
+                "3" => "test",
+                "4" => "test",
+                "5" => "test",
+                "6" => "test",
+                "7" => "test",
+                "8" => "test"
+            ],
+            "TTI" => [
+                "0" => "test",
+                "1" => "test",
+                "2" => "test",
+                "3" => "test",
+                "4" => "test",
+                "5" => "test",
+                "6" => "test",
+                "7" => "test",
+                "8" => "test"
+            ],
+            "TTFB" => [
+                "0" => "test",
+                "1" => "test",
+                "2" => "test",
+                "3" => "test",
+                "4" => "test",
+                "5" => "test",
+                "6" => "test",
+                "7" => "test",
+                "8" => "test"
+            ]
+        ]);
     }
+
+    public function getOAUTHKey(){
+        return "y0_AgAAAAAOcEs7AAtNmgAAAAD7OphRAACA8ZnZYs5MtZ2iJRbk1Pki-PjuJw";
+    }
+
+    public function getCountersFull(){
+        $response = Http::withHeaders([
+            'Authorization' => 'OAuth ' . $this->getOAUTHKey(),
+        ])->get('https://api-metrika.yandex.net/management/v1/counters');
+        return $response->json();
+    }
+
+    public function getCountersShort(){
+        $counters = collect();
+        $response = $this->getCountersFull();
+        foreach ($response['counters'] as $counter){
+            $item = array();
+            $item['id'] = $counter['id'];
+            $item['name'] = $counter['name'];
+            $item['create_time'] = $counter['create_time'];
+            $item['site'] = $counter['site'];
+            $counters->push($item);
+        }
+        return response()->json([
+            'data' => $counters
+        ]);
+    }
+
+    public static function getYandexMetrikaObject()
+    {
+        if (static::$yandexMetrikaObject === null) {
+            static::$yandexMetrikaObject = new YandexMetrika();
+        }
+        return static::$yandexMetrikaObject;
+    }
+
+    public function getMetricData()
+    {
+//        if (!empty($_GET['site'])){
+//            $urlParams = [
+//                'ids'           => $_GET['site'],
+//                'date1'         => (new Carbon($_GET['date1']))->format('Y-m-d'),
+//                'date2'         => (new Carbon($_GET['date2']))->format('Y-m-d'),
+//                'metrics'    => 'ym:s:visits',
+//                'sort'       => '-ym:s:visits',
+//            ];
+//            return response()->json(self::getYandexMetrikaObject()->getRequestToApi($urlParams));
+//        }
+        $urlParams = [
+            'ids'           => '56741710',
+            'date1'         => Carbon::today()->format('Y-m-d'),
+            'date2'         => Carbon::today()->format('Y-m-d'),
+            'metrics'    => 'ym:s:visits',
+            'sort'       => '-ym:s:visits',
+        ];
+        return response()->json(self::getYandexMetrikaObject()->getRequestToApi($urlParams));
+    }
+
 }
