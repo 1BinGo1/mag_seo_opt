@@ -224,25 +224,54 @@
             height: 80%;
         }
 
+        #period_info{
+            display: flex;
+        }
+
     </style>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
+    <script src="https://unpkg.com/gijgo@1.9.14/js/messages/messages.ru-ru.js" type="text/javascript"></script>
+
 </head>
 <body>
 
+<div id="metric_info" style="display: flex; flex-direction: column; align-items: center">
+    <div id="period_info" style="display: flex;">
+        <div style="display: flex">
+            <div style="margin-right: 20px; display: flex">
+                <div style="margin-right: 10px; margin-top: 5px">
+                    <label for="datepicker_from">От</label>
+                </div>
+                <div>
+                    <input id="datepicker_from" width="276" />
+                </div>
+            </div>
+            <div style="display: flex">
+                <div style="margin-right: 10px; margin-top: 5px">
+                    <label for="datepicker_until">До</label>
+                </div>
+                <div>
+                    <input id="datepicker_until" width="276" />
+                </div>
+            </div>
+        </div>
+        <div style="margin-left: 20px">
+            <button id="filter_metric_start" type="button" class="btn btn-success">Применить</button>
+        </div>
+    </div>
+    <div id="filter_metric_alert">
+        <div class="alert alert-warning" role="alert">
+            A simple warning alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+        </div>
+    </div>
+</div>
 
-<div id="metric_info">
-    <div id="period_info">
-        <select class="form-select" aria-label="Default select example" id="select_period_info">
-            <option value="today">Сегодня</option>
-            <option value="yesterday">Вчера</option>
-            <option value="week">Неделя</option>
-            <option value="month">Месяц</option>
-        </select>
-    </div>
-    <div id="metric_data_view">
-        <div id="frequently_viewed_pages"></div>
-    </div>
+<div id="metric_data_view">
+    <div id="frequently_viewed_pages"></div>
 </div>
 
 
@@ -304,6 +333,19 @@
 </div>
 
 <script>
+    var $datepicker_from = $('#datepicker_from').datepicker({
+        uiLibrary: 'bootstrap5',
+        locale: 'ru-ru',
+        format: 'yyyy-mm-dd'
+    });
+    var $datepicker_until = $('#datepicker_until').datepicker({
+        uiLibrary: 'bootstrap5',
+        locale: 'ru-ru',
+        format: 'yyyy-mm-dd'
+    });
+</script>
+
+<script>
     // ограничение частоты вызова функции
     function throttle(func, limit) {
         let lastFunc;
@@ -334,6 +376,8 @@
         var isAssembled = true;
         var metrics = document.querySelectorAll('.metric');
         var throttledRotateCube = throttle(rotateCube, 20);
+        $('#filter_metric_alert').hide();
+
         const degs = {
             back:   {X: 0, Y:   180},
             top:    {X:   -90, Y:   0},
@@ -412,7 +456,7 @@
                             sites_select.appendChild(option);
                         }
                         loadData(sites_select.value.trim());
-                        getMetricData(sites_select.value.trim());
+                        getMetricData('56741710', new Date().toISOString().split('T')[0] , new Date().toISOString().split('T')[0]);
                     }
                 }
             });
@@ -551,9 +595,7 @@
             });
         }
 
-        function getMetricData(site = ''){
-            let date1 = '2024-01-01';
-            let date2 = '2024-02-01';
+        function getMetricData(site, date1, date2){
             $.ajax({
                 type: "get",
                 url: "http://localhost:8000/metric_data",
@@ -580,6 +622,7 @@
                 }
             });
             loadData(sites_list_value);
+            getMetricData(sites_list_value, new Date().toISOString().split('T')[0] , new Date().toISOString().split('T')[0]);
         });
 
         metrics.forEach(el => el.addEventListener('dragstart', event => {
@@ -1082,6 +1125,19 @@
             element.addEventListener('dragstart', function(e) {
                 e.preventDefault();
             });
+        });
+
+        var filter_metric_start = document.getElementById('filter_metric_start');
+        filter_metric_start.addEventListener('click', function (e){
+            let date1 = $datepicker_from.value();
+            let date2 = $datepicker_until.value();
+            if (date1 <= date2){
+                $('#filter_metric_alert').hide();
+                getMetricData(sites_select.value,  date1, date2);
+            }
+            else{
+                $('#filter_metric_alert').show();
+            }
         });
 
     });

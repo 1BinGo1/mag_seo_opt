@@ -426,24 +426,17 @@ class YandexController extends Controller
 
     public function getMetricData()
     {
-//        if (!empty($_GET['site'])){
-//            $urlParams = [
-//                'ids'           => $_GET['site'],
-//                'date1'         => (new Carbon($_GET['date1']))->format('Y-m-d'),
-//                'date2'         => (new Carbon($_GET['date2']))->format('Y-m-d'),
-//                'metrics'    => 'ym:s:visits',
-//                'sort'       => '-ym:s:visits',
-//            ];
-//            return response()->json(self::getYandexMetrikaObject()->getRequestToApi($urlParams));
-//        }
-        $urlParams = [
-            'ids'           => '56741710',
-            'date1'         => Carbon::today()->format('Y-m-d'),
-            'date2'         => Carbon::today()->format('Y-m-d'),
-            'metrics'    => 'ym:s:visits',
-            'sort'       => '-ym:s:visits',
-        ];
-        return response()->json(self::getYandexMetrikaObject()->getRequestToApi($urlParams));
+        if (!empty($_GET['site'])){
+            $urlParams = [
+                'ids'           => $_GET['site'],
+                'date1'         => (new Carbon($_GET['date1']))->format('Y-m-d'),
+                'date2'         => (new Carbon($_GET['date2']))->format('Y-m-d'),
+                'metrics'    => 'ym:s:visits',
+                'sort'       => '-ym:s:visits',
+            ];
+            return response()->json(self::getYandexMetrikaObject()->getRequestToApi($urlParams));
+        }
+        return response()->json();
     }
 
 }
