@@ -1,20 +1,80 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 5 DatePicker</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
-    <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .highcharts-credits{
+            visibility: hidden;
+        }
+        #container{
+            width: 300px;
+            height: 300px;
+        }
+    </style>
 </head>
 <body>
-<input id="datepicker" width="276" />
+
+<div id="container"></div>
+<button type="button" id="pdf">PDF</button>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/gantt/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/gantt/modules/accessibility.js"></script>
 <script>
-    $('#datepicker').datepicker({
-        locale: 'ru-ru',
-        format: 'dd mmm yyyy'
+    // Data retrieved from: https://www.uefa.com/uefachampionsleague/history/
+    Highcharts.chart('container', {
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'UEFA CL top scorers by season'
+        },
+        xAxis: {
+            categories: ['2020/21', '2019/20', '2018/19', '2017/18', '2016/17']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Goals'
+            }
+        },
+        legend: {
+            reversed: true
+        },
+        plotOptions: {
+            series: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        series: [{
+            name: 'Cristiano Ronaldo',
+            data: [4, 4, 6, 15, 12]
+        }, {
+            name: 'Lionel Messi',
+            data: [5, 3, 12, 6, 11]
+        }, {
+            name: 'Robert Lewandowski',
+            data: [5, 15, 8, 5, 8]
+        }]
     });
+
+
+    document.getElementById('pdf').addEventListener('click', function () {
+        Highcharts.charts[0].exportChart({
+            type: 'application/pdf'
+        });
+    });
+
 </script>
+
+
+
 </body>
 </html>

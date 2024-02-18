@@ -222,10 +222,25 @@
             background-color: white;
             width: 1000px;
             height: 80%;
+            overflow: scroll;
         }
 
         #period_info{
             display: flex;
+        }
+
+        #metric_info::-webkit-scrollbar{
+            width: 12px;
+        }
+
+        #metric_info::-webkit-scrollbar-track{
+            background: orange;
+        }
+
+        #metric_info::-webkit-scrollbar-thumb{
+            background-color: blue;
+            border-radius: 20px;
+            border: 3px solid orange;
         }
 
     </style>
@@ -238,6 +253,12 @@
 
 </head>
 <body>
+
+{{--<div class="container">--}}
+{{--    <div>--}}
+{{--        --}}
+{{--    </div>--}}
+{{--</div>--}}
 
 <div id="metric_info" style="display: flex; flex-direction: column; align-items: center">
     <div id="period_info" style="display: flex;">
@@ -268,12 +289,10 @@
             A simple warning alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
         </div>
     </div>
+    <div id="metric_data_view">
+        <div id="frequently_viewed_pages"></div>
+    </div>
 </div>
-
-<div id="metric_data_view">
-    <div id="frequently_viewed_pages"></div>
-</div>
-
 
 <div id="cube-container">
     <div id="cube">
@@ -297,6 +316,10 @@
             <div class="face-text no-select">SI</div>
         </div>
     </div>
+
+
+
+
 </div>
 
 
@@ -305,7 +328,6 @@
 </div>
 
 <div id="metrics_control">
-
     <div id="metric-buttons">
         <!-- переключения между метриками -->
         <button data-metric="FCP">FCP</button>
@@ -321,15 +343,9 @@
         <div class="metric" data-metric="TTI" draggable="true">TTI</div>
         <div class="metric" data-metric="TTFB" draggable="true">TTFB</div>
     </div>
-
     <div style="margin-left: 20px" id="sites_list">
-        <select class="form-select" aria-label="Default select example" id="sites_select">
-{{--            <option selected value="28352696">Site #1</option>--}}
-{{--            <option value="60742804">Site #2</option>--}}
-{{--            <option value="56741710">Site #3</option>--}}
-        </select>
+        <select class="form-select" aria-label="Default select example" id="sites_select"></select>
     </div>
-
 </div>
 
 <script>
@@ -456,7 +472,7 @@
                             sites_select.appendChild(option);
                         }
                         loadData(sites_select.value.trim());
-                        getMetricData('56741710', new Date().toISOString().split('T')[0] , new Date().toISOString().split('T')[0]);
+                        getMetricData(sites_select.value.trim(), new Date().toISOString().split('T')[0] , new Date().toISOString().split('T')[0]);
                     }
                 }
             });
