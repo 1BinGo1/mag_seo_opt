@@ -6,12 +6,8 @@
         body, html {
             height: 100%;
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             background-color: #fce4e4 !important;
         }
-
 
         #cube-container {
             perspective: 1000px;
@@ -108,25 +104,6 @@
         }
 
 
-        /*.front  { transform: rotateY(0deg) translateZ(100px); }*/
-        /*.back {transform: rotateY(180deg) translateZ(100px); }*/
-        /*.left   { transform: rotateY(-90deg) translateZ(100px); }*/
-        /*.right  { transform: rotateY(90deg) translateZ(100px); }*/
-        /*.top    { transform: rotateX(90deg) translateZ(100px); }*/
-        /*.bottom { transform: rotateX(-90deg) translateZ(100px); }*/
-
-
-        /*.disassembled .front,*/
-        /*.disassembled .back {*/
-        /*    transform: rotateY(0deg) rotateZ(180deg) translateZ(-200px);*/
-        /*}*/
-        /*.disassembled .left,*/
-        /*.disassembled .right,*/
-        /*.disassembled .top,*/
-        /*.disassembled .bottom {*/
-        /*    transform: rotateY(180deg) rotateZ(180deg) translateZ(-200px);*/
-        /*}*/
-
         .back   {transform: rotateY(-180deg) translateZ(200px);}
         .top    {transform: rotateX( 90deg)  translateZ(200px);}
         .front  {transform:                  translateZ(200px);}
@@ -153,9 +130,7 @@
         }
 
         #metrics_control{
-            position: absolute;
             display: flex;
-            bottom: 10px;
         }
 
         #metrics{
@@ -175,30 +150,12 @@
             background: lightgreen;
         }
 
-
-        /*#metric-buttons {*/
-        /*    position: absolute;*/
-        /*    bottom: 10px;*/
-        /*    left: 50%;*/
-        /*    transform: translateX(-50%);*/
-        /*    display: flex;*/
-        /*    gap: 10px;*/
-        /*}*/
-
-        /*#metrics {*/
-        /*    position: absolute;*/
-        /*    right: 50px;*/
-        /*    top: 50px;*/
-        /*}*/
-
-
         #metric-buttons button {
             padding: 5px 10px;
             background: rgb(103, 21, 158, 0.5);
             border: none;
             cursor: pointer;
         }
-
 
         #metric-buttons button:hover {
             background: lightgreen;
@@ -212,16 +169,14 @@
         }
 
         #metric_info{
-            position: absolute;
             display: flex;
-            left: 10px;
             margin-bottom: 100px;
             border: 3px solid rgb(103, 21, 158, 0.5);
             border-radius: 10px ;
             padding: 10px;
             background-color: white;
             width: 1000px;
-            height: 80%;
+            height: 800px;
             overflow: scroll;
         }
 
@@ -243,6 +198,27 @@
             border: 3px solid orange;
         }
 
+        .flex-container {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        #cube_metrics{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .highcharts-credits{
+            visibility: hidden;
+        }
+
     </style>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -254,99 +230,111 @@
 </head>
 <body>
 
-{{--<div class="container">--}}
-{{--    <div>--}}
-{{--        --}}
-{{--    </div>--}}
-{{--</div>--}}
+<div class="flex-container">
 
-<div id="metric_info" style="display: flex; flex-direction: column; align-items: center">
-    <div id="period_info" style="display: flex;">
-        <div style="display: flex">
-            <div style="margin-right: 20px; display: flex">
-                <div style="margin-right: 10px; margin-top: 5px">
-                    <label for="datepicker_from">От</label>
+    <div id="cube_metrics">
+
+        <div>
+            <div id="metrics_control">
+                <div id="metric-buttons">
+                    <!-- переключения между метриками -->
+                    <button data-metric="FCP">FCP</button>
+                    <button data-metric="TBT">TBT</button>
+                    <button data-metric="LCP">LCP</button>
+                    <button data-metric="FID">FID</button>
+                    <button data-metric="CLS">CLS</button>
+                    <button data-metric="SI">SI</button>
+                    <button id="toggle-cube">Собрать/Разобрать Куб</button>
                 </div>
-                <div>
-                    <input id="datepicker_from" width="276" />
+                <div id="metrics">
+                    <!-- метрики -->
+                    <div class="metric" data-metric="TTI" draggable="true">TTI</div>
+                    <div class="metric" data-metric="TTFB" draggable="true">TTFB</div>
+                </div>
+                <div style="margin-left: 20px" id="sites_list">
+                    <select class="form-select" aria-label="Default select example" id="sites_select"></select>
                 </div>
             </div>
-            <div style="display: flex">
-                <div style="margin-right: 10px; margin-top: 5px">
-                    <label for="datepicker_until">До</label>
-                </div>
-                <div>
-                    <input id="datepicker_until" width="276" />
+        </div>
+
+        <div>
+            <div id="cube-container">
+                <div id="cube">
+                    <!-- 6 граней куба -->
+                    <div class="face back" data-metric="FCP">
+                        <div class="face-text no-select">FCP</div>
+                    </div>
+                    <div class="face top" data-metric="TBT">
+                        <div class="face-text no-select">TBT</div>
+                    </div>
+                    <div class="face front" data-metric="LCP">
+                        <div class="face-text no-select">LCP</div>
+                    </div>
+                    <div class="face bottom" data-metric="FID">
+                        <div class="face-text no-select">FID</div>
+                    </div>
+                    <div class="face left" data-metric="CLS">
+                        <div class="face-text no-select">CLS</div>
+                    </div>
+                    <div class="face right" data-metric="SI">
+                        <div class="face-text no-select">SI</div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div style="margin-left: 20px">
-            <button id="filter_metric_start" type="button" class="btn btn-success">Применить</button>
+
+    </div>
+
+
+    <div>
+        <div id="metric_info" style="display: flex; flex-direction: column; align-items: center">
+            <div id="period_info" style="display: flex;">
+                <div style="display: flex">
+                    <div style="margin-right: 20px; display: flex">
+                        <div style="margin-right: 10px; margin-top: 5px">
+                            <label for="datepicker_from">От</label>
+                        </div>
+                        <div>
+                            <input id="datepicker_from" width="276" />
+                        </div>
+                    </div>
+                    <div style="display: flex">
+                        <div style="margin-right: 10px; margin-top: 5px">
+                            <label for="datepicker_until">До</label>
+                        </div>
+                        <div>
+                            <input id="datepicker_until" width="276" />
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-left: 20px">
+                    <button id="filter_metric_start" type="button" class="btn btn-success">Применить</button>
+                </div>
+            </div>
+            <div id="filter_metric_alert">
+                <div class="alert alert-warning" role="alert">
+                    A simple warning alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+                </div>
+            </div>
+            <div id="metric_data_view">
+                <div id="browsers_data"></div>
+            </div>
         </div>
     </div>
-    <div id="filter_metric_alert">
-        <div class="alert alert-warning" role="alert">
-            A simple warning alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-        </div>
-    </div>
-    <div id="metric_data_view">
-        <div id="frequently_viewed_pages"></div>
-    </div>
+
 </div>
 
-<div id="cube-container">
-    <div id="cube">
-        <!-- 6 граней куба -->
-        <div class="face back" data-metric="FCP">
-            <div class="face-text no-select">FCP</div>
-        </div>
-        <div class="face top" data-metric="TBT">
-            <div class="face-text no-select">TBT</div>
-        </div>
-        <div class="face front" data-metric="LCP">
-            <div class="face-text no-select">LCP</div>
-        </div>
-        <div class="face bottom" data-metric="FID">
-            <div class="face-text no-select">FID</div>
-        </div>
-        <div class="face left" data-metric="CLS">
-            <div class="face-text no-select">CLS</div>
-        </div>
-        <div class="face right" data-metric="SI">
-            <div class="face-text no-select">SI</div>
-        </div>
-    </div>
 
-
-
-
-</div>
 
 
 <div id="metric-description">
     <!-- отописание метрики -->
 </div>
 
-<div id="metrics_control">
-    <div id="metric-buttons">
-        <!-- переключения между метриками -->
-        <button data-metric="FCP">FCP</button>
-        <button data-metric="TBT">TBT</button>
-        <button data-metric="LCP">LCP</button>
-        <button data-metric="FID">FID</button>
-        <button data-metric="CLS">CLS</button>
-        <button data-metric="SI">SI</button>
-        <button id="toggle-cube">Собрать/Разобрать Куб</button>
-    </div>
-    <div id="metrics">
-        <!-- метрики -->
-        <div class="metric" data-metric="TTI" draggable="true">TTI</div>
-        <div class="metric" data-metric="TTFB" draggable="true">TTFB</div>
-    </div>
-    <div style="margin-left: 20px" id="sites_list">
-        <select class="form-select" aria-label="Default select example" id="sites_select"></select>
-    </div>
-</div>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/gantt/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/gantt/modules/accessibility.js"></script>
 
 <script>
     var $datepicker_from = $('#datepicker_from').datepicker({
@@ -618,10 +606,53 @@
                 data : {
                     site: site,
                     date1: date1,
-                    date2: date2
+                    date2: date2,
+                    type: 'browsers'
                 },
                 success: function(data) {
-                    console.log(data);
+                    let vd = [];
+                    if (data['data']['data'].length > 0){
+                        for (let i = 0; i < data['data']['data'].length; i++){
+                            let element = {};
+                            element['name'] = data['data']['data'][i]['dimensions'][0]['name'];
+                            element['y'] = data['data']['data'][i]['metrics'][0];
+                            vd.push(element);
+                        }
+                    }
+                    Highcharts.chart('browsers_data', {
+                        chart: {
+                            type: 'pie'
+                        },
+                        title: {
+                            text: 'Браузеры'
+                        },
+                        plotOptions: {
+                            series: {
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                dataLabels: [{
+                                    enabled: true,
+                                    distance: 20
+                                }, {
+                                    enabled: true,
+                                    distance: -40,
+                                    format: '{point.percentage:.1f}%',
+                                    style: {
+                                        fontSize: '1.2em',
+                                        textOutline: 'none',
+                                        opacity: 0.7
+                                    },
+                                }]
+                            }
+                        },
+                        series: [
+                            {
+                                name: 'Количество',
+                                colorByPoint: true,
+                                data: vd
+                            }
+                        ]
+                    });
                 }
             });
         }
@@ -1016,7 +1047,7 @@
         document.querySelectorAll('#metric-buttons button').forEach(function (button) {
             button.addEventListener('click', function (e) {
                 e.preventDefault();
-
+                assembleCube();
 
                 if(e.target.id !== "toggle-cube"){
                     autoRotate = false;
@@ -1147,12 +1178,20 @@
         filter_metric_start.addEventListener('click', function (e){
             let date1 = $datepicker_from.value();
             let date2 = $datepicker_until.value();
-            if (date1 <= date2){
+            if (date1 === ''){
+                $('#filter_metric_alert').hide();
+                $('#filter_metric_alert').show();
+            }
+            else if (date2 === ''){
+                $('#filter_metric_alert').hide();
+                $('#filter_metric_alert').show();
+            }
+            else if (date1 <= date2){
                 $('#filter_metric_alert').hide();
                 getMetricData(sites_select.value,  date1, date2);
             }
             else{
-                $('#filter_metric_alert').show();
+                $('#filter_metric_alert').hide();
             }
         });
 
