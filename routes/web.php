@@ -21,6 +21,12 @@ Route::get('/', function () {
 Route::get('/metric_data', [\App\Http\Controllers\YandexController::class, 'getMetricData'])->name('get_metric_data');
 Route::get('/counters_full', [\App\Http\Controllers\YandexController::class, 'getCountersFull'])->name('get_counters_all');
 Route::get('/counters_short', [\App\Http\Controllers\YandexController::class, 'getCountersShort'])->name('get_counters_short');
+Route::get('/run_page_speed', [\App\Http\Controllers\GoogleController::class, 'runPageSpeed'])->name('run_page_speed');
+
+Route::get('/header', function () {
+    return view('header');
+});
+
 
 Route::get('/cal', function () {
     return view('cal');
@@ -41,6 +47,10 @@ Route::get('/test4', function () {
 
 Route::get('/test5', function () {
     return view('test5');
+});
+
+Route::get('/test6', function () {
+    return view('test6');
 });
 
 Route::get('/auth_ya', function () {

@@ -426,17 +426,35 @@ class YandexController extends Controller
 
     public function getMetricData()
     {
-        if (!empty($_GET['site'])){
-            $urlParams = [
-                'ids'           => $_GET['site'],
-                'date1'         => (new Carbon($_GET['date1']))->format('Y-m-d'),
-                'date2'         => (new Carbon($_GET['date2']))->format('Y-m-d'),
-                'metrics'    => 'ym:s:visits',
-                'sort'       => '-ym:s:visits',
-            ];
+        $urlParams = [
+            'ids'           => $_GET['site'],
+            'date1'         => (new Carbon($_GET['date1']))->format('Y-m-d'),
+            'date2'         => (new Carbon($_GET['date2']))->format('Y-m-d'),
+        ];
+
+        if ($_GET['type'] === 'browsers'){
+            $urlParams['metrics'] = 'ym:s:visits';
+            $urlParams['dimensions'] = 'ym:s:browser';
+            $urlParams['sort'] = '-ym:s:visits';
+            $urlParams['limit'] = '10';
             return response()->json(self::getYandexMetrikaObject()->getRequestToApi($urlParams));
         }
+
         return response()->json();
+
+
+//        if (!empty($_GET['site'])){
+//            $urlParams = [
+//                'ids'           => $_GET['site'],
+//                'date1'         => (new Carbon($_GET['date1']))->format('Y-m-d'),
+//                'date2'         => (new Carbon($_GET['date2']))->format('Y-m-d'),
+//                'metrics'    => $_GET['metrics'],
+//                'sort'       => '-' . $_GET['metrics'],
+//            ];
+//            return response()->json(self::getYandexMetrikaObject()->getRequestToApi($urlParams));
+//        }
+//        return response()->json();
+
     }
 
 }
