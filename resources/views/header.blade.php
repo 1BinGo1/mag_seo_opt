@@ -579,13 +579,13 @@
                                                         <p>Время до первого байта (TTFB) — это основополагающий показатель для измерения времени установки соединения и скорости реагирования веб-сервера как в лаборатории, так и в полевых условиях. Это помогает определить, когда веб-сервер слишком медленно отвечает на запросы. В случае запросов навигации, то есть запросов HTML-документа, он предшествует любому другому значимому показателю производительности загрузки.</p>
                                                         <p>Минимальное значение: 0</p>
                                                         <p>Максимальное значение: 1</p>
-                                                        <button type="button" data-data_additional_metric='{"name": "TTFB значение", "group" : "technical_metrics"}' class="btn btn-outline-success btn_add_in_group">Добавить показатель</button>
+                                                        <button type="button" data-data_additional_metric='{"name": "TTFB значение", "minValue": "0", "maxValue": "1", "group" : "technical_metrics"}' class="btn btn-outline-success btn_add_in_group">Добавить показатель</button>
                                                     </div>
                                                     <div class="tab-pane fade" id="list-base_templates_technical_metrics-fcp" role="tabpanel" aria-labelledby="item_base_templates_technical_metrics-fcp-list">
                                                         <p>First Contentful Paint (FCP) — это важный, ориентированный на пользователя показатель для измерения воспринимаемой скорости загрузки . Он отмечает первую точку на временной шкале загрузки страницы, где пользователь может видеть что-либо на экране. Быстрый FCP помогает убедить пользователя в том, что что-то происходит .</p>
                                                         <p>Минимальное значение: 0</p>
                                                         <p>Максимальное значение: 1</p>
-                                                        <button type="button" data-data_additional_metric='{"name": "FCP значение", "group" : "technical_metrics"}' class="btn btn-outline-success btn_add_in_group">Добавить показатель</button>
+                                                        <button type="button" data-data_additional_metric='{"name": "FCP значение", "minValue": "0", "maxValue": "1", "group" : "technical_metrics"}' class="btn btn-outline-success btn_add_in_group">Добавить показатель</button>
                                                     </div>
                                                 </div>
                                                 <div class="tab-content" data-group="seo_metrics" id="nav-list_base_templates_seo_metrics-tabContent" style="display: none">
@@ -593,13 +593,13 @@
                                                         <p>Test1</p>
                                                         <p>Минимальное значение: 0</p>
                                                         <p>Максимальное значение: 1</p>
-                                                        <button type="button" data-data_additional_metric='{"name": "Test1", "group" : "seo_metrics"}' class="btn btn-outline-success btn_add_in_group">Добавить показатель</button>
+                                                        <button type="button" data-data_additional_metric='{"name": "Test1", "minValue": "0", "maxValue": "1", "group" : "seo_metrics"}' class="btn btn-outline-success btn_add_in_group">Добавить показатель</button>
                                                     </div>
                                                     <div class="tab-pane fade" id="list-base_templates_seo_metrics-test2" role="tabpanel" aria-labelledby="item_base_templates_seo_metrics-test2-list">
                                                         <p>Test2</p>
                                                         <p>Минимальное значение: 0</p>
                                                         <p>Максимальное значение: 1</p>
-                                                        <button type="button" data-data_additional_metric='{"name": "Test2", "group" : "seo_metrics"}' class="btn btn-outline-success btn_add_in_group">Добавить показатель</button>
+                                                        <button type="button" data-data_additional_metric='{"name": "Test2", "minValue": "0", "maxValue": "1", "group" : "seo_metrics"}' class="btn btn-outline-success btn_add_in_group">Добавить показатель</button>
                                                     </div>
                                                 </div>
                                                 <div class="tab-content" data-group="audience_metrics" id="nav-list_base_templates_audience_metrics-tabContent" style="display: none">
@@ -607,13 +607,13 @@
                                                         <p>Test3</p>
                                                         <p>Минимальное значение: 0</p>
                                                         <p>Максимальное значение: 1</p>
-                                                        <button type="button" data-data_additional_metric='{"name": "Test3", "group" : "audience_metrics"}' class="btn btn-outline-success btn_add_in_group">Добавить показатель</button>
+                                                        <button type="button" data-data_additional_metric='{"name": "Test3", "minValue": "0", "maxValue": "1", "group" : "audience_metrics"}' class="btn btn-outline-success btn_add_in_group">Добавить показатель</button>
                                                     </div>
                                                     <div class="tab-pane fade" id="list-base_templates_audience_metrics-test4" role="tabpanel" aria-labelledby="item_base_templates_audience_metrics-test4-list">
                                                         <p>Test4</p>
                                                         <p>Минимальное значение: 0</p>
                                                         <p>Максимальное значение: 1</p>
-                                                        <button type="button" data-data_additional_metric='{"name": "Test4", "group" : "audience_metrics"}' class="btn btn-outline-success btn_add_in_group">Добавить показатель</button>
+                                                        <button type="button" data-data_additional_metric='{"name": "Test4", "minValue": "0", "maxValue": "1", "group" : "audience_metrics"}' class="btn btn-outline-success btn_add_in_group">Добавить показатель</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -739,7 +739,7 @@
             let fakeId = Math.random().toString(16).slice(2);
 
             let list = `<a class="list-group-item list-group-item-action" id="item_base_templates_${group}-${fakeId}-list" data-bs-toggle="list" href="#list-base_templates_${group}-${fakeId}" role="tab" aria-controls="list-base_templates_${group}-test4">${title}</a>`;
-            let html = `<div class="tab-pane fade" id="list-base_templates_${group}-${fakeId}" role="tabpanel" aria-labelledby="item_base_templates_${group}-${fakeId}-list"><p>${description}</p><p>Минимальное значение: ${minValue}</p><p>Максимальное значение: ${maxValue}</p><button type="button" data-data_additional_metric='{"name": "${title}", "group" : "${group}"}' class="btn btn-outline-success btn_add_in_group">Добавить показатель</button></div>`;
+            let html = `<div class="tab-pane fade" id="list-base_templates_${group}-${fakeId}" role="tabpanel" aria-labelledby="item_base_templates_${group}-${fakeId}-list"><p>${description}</p><p>Минимальное значение: ${minValue}</p><p>Максимальное значение: ${maxValue}</p><button type="button" data-data_additional_metric='{"name": "${title}", "minValue": "${minValue}", "maxValue": "${maxValue}", "group" : "${group}"}' class="btn btn-outline-success btn_add_in_group">Добавить показатель</button></div>`;
 
             if (group === "technical_metrics"){
                 $('#list_base_templates_technical_metrics').append(list);
@@ -773,7 +773,7 @@
             let seo_metrics_group = $('#additional_seo_metrics');
             let audience_metrics_group = $('#additional_audience_metrics');
             let fakeId = Math.random().toString(16).slice(2);
-            let html = `<div class="form-floating mb-3" id="${fakeId}_addional_item"> <input type="number" class="form-control" id="${fakeId}_input" step="0.01" min="0" max="1" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required> <div class="invalid-feedback">Пожалуйста, введите число от 0 до 1 </div> <label for="${fakeId}_input">${data['name']}</label> <input type="range" class="form-range max-calc" data-range-group="${data['group']}" min="0" max="1" value="0" step="0.01" id="${fakeId}_range" style="margin-top: -15px;padding: 0"> <span class="current_range_value" data-range-value="${fakeId}_range"></span> <div class="form-text" style="margin: 0">Укажите,пожалуйста приоритет показателя.</div> <button type="button" id="${fakeId}_btn_remove_additional_metric" class="btn btn-danger btn-sm remove_additional_metric">Исключить показатель</button> </div>`;
+            let html = `<div class="form-floating mb-3" id="${fakeId}_addional_item"> <input type="number" class="form-control" id="${fakeId}_input" step="0.01" min="${data['minValue']}" max="${data['maxValue']}" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required> <div class="invalid-feedback">Пожалуйста, введите число от ${data['minValue']} до ${data['maxValue']} </div> <label for="${fakeId}_input">${data['name']}</label> <input type="range" class="form-range max-calc" data-range-group="${data['group']}" min="0" max="1" value="0" step="0.01" id="${fakeId}_range" style="margin-top: -15px;padding: 0"> <span class="current_range_value" data-range-value="${fakeId}_range"></span> <div class="form-text" style="margin: 0">Укажите,пожалуйста приоритет показателя.</div> <button type="button" id="${fakeId}_btn_remove_additional_metric" class="btn btn-danger btn-sm remove_additional_metric">Исключить показатель</button> </div>`;
 
             if (data['group'] === "technical_metrics"){
                 technical_metrics_group.append(html);
