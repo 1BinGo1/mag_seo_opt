@@ -214,38 +214,38 @@
                                                     </button>
                                                 </div>
                                                 <div style="margin-bottom: 20px">
-                                                    <input type="number" min="0" max="1" step="0.01" value="0" class="form-control range_max_metric_in_group" required>
+                                                    <input type="number" min="0" max="1" step="0.01" value="0" class="form-control range_max_metric_in_group" name="technical_metrics_general_index" required>
                                                     <div class="form-text">Укажите, пожалуйста, вес группы от 0 до 1</div>
                                                 </div>
                                             </div>
                                             <div>
                                                 <div class="form-floating mb-3">
-                                                    <input type="number" class="form-control" id="lcp_calc_input" step="0.01" min="0" max="1" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required>
+                                                    <input type="number" class="form-control" name="lcp_calc_input" id="lcp_calc_input" step="0.01" min="0" max="1" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required>
                                                     <div class="invalid-feedback">
                                                         Пожалуйста, введите число от 0 до 1
                                                     </div>
                                                     <label for="lcp_calc_input">LCP value</label>
-                                                    <input type="range" class="form-range max-calc" data-range-group="technical_metrics" min="0" max="1" value="0" step="0.01" id="lcp_calc_range" style="margin-top: -15px;padding: 0">
+                                                    <input type="range" class="form-range max-calc" name="lcp_calc_range" data-range-group="technical_metrics" min="0" max="1" value="0" step="0.01" id="lcp_calc_range" style="margin-top: -15px;padding: 0">
                                                     <span class="current_range_value" data-range-value="lcp_calc_range"></span>
                                                     <div class="form-text" style="margin: 0">Укажите,пожалуйста приоритет показателя.</div>
                                                 </div>
                                                 <div class="form-floating mb-3">
-                                                    <input type="number" class="form-control" id="fid_calc_input" step="0.01" min="0" max="1" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required>
+                                                    <input type="number" class="form-control" name="fid_calc_input" id="fid_calc_input"  step="0.01" min="0" max="1" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required>
                                                     <div class="invalid-feedback">
                                                         Пожалуйста, введите число от 0 до 1
                                                     </div>
                                                     <label for="fid_calc_input">FID value</label>
-                                                    <input type="range" class="form-range max-calc" data-range-group="technical_metrics" min="0" max="1" value="0" step="0.01" id="fid_calc_range" style="margin-top: -15px;padding: 0">
+                                                    <input type="range" class="form-range max-calc" name="fid_calc_range" data-range-group="technical_metrics" min="0" max="1" value="0" step="0.01" id="fid_calc_range" style="margin-top: -15px;padding: 0">
                                                     <span class="current_range_value" data-range-value="fid_calc_range"></span>
                                                     <div class="form-text" style="margin: 0">Укажите,пожалуйста приоритет показателя.</div>
                                                 </div>
                                                 <div class="form-floating mb-3">
-                                                    <input type="number" class="form-control" id="cls_calc_input" step="0.01" min="0" max="1" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required>
+                                                    <input type="number" class="form-control" name="cls_calc_input" id="cls_calc_input" step="0.01" min="0" max="1" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required>
                                                     <div class="invalid-feedback">
                                                         Пожалуйста, введите число от 0 до 1
                                                     </div>
                                                     <label for="cls_calc_input">CLS value</label>
-                                                    <input type="range" class="form-range max-calc" data-range-group="technical_metrics" min="0" max="1" value="0" step="0.01" id="cls_calc_range" style="margin-top: -15px;padding: 0">
+                                                    <input type="range" class="form-range max-calc" name="cls_calc_range" data-range-group="technical_metrics" min="0" max="1" value="0" step="0.01" id="cls_calc_range" style="margin-top: -15px;padding: 0">
                                                     <span class="current_range_value" data-range-value="cls_calc_range"></span>
                                                     <div class="form-text" style="margin: 0">Укажите,пожалуйста приоритет показателя.</div>
                                                 </div>
@@ -276,38 +276,38 @@
                                                     </button>
                                                 </div>
                                                 <div style="margin-bottom: 20px">
-                                                    <input type="number" min="0" max="1" step="0.01" value="0" class="form-control range_max_metric_in_group" required>
+                                                    <input type="number" min="0" max="1" step="0.01" value="0" class="form-control range_max_metric_in_group" name="seo_metrics_general_index" required>
                                                     <div class="form-text">Укажите, пожалуйста, вес группы от 0 до 1</div>
                                                 </div>
                                             </div>
                                             <div>
                                                 <div class="form-floating mb-3">
-                                                    <input type="number" class="form-control" id="number_of_visits_input" step="0.01" min="0" max="1" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required>
+                                                    <input type="number" class="form-control" name="number_of_visits_input" id="number_of_visits_input" step="0.01" min="0" max="1" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required>
                                                     <div class="invalid-feedback">
                                                         Пожалуйста, введите число от 0 до 1
                                                     </div>
                                                     <label for="number_of_visits_input">Количество посещений</label>
-                                                    <input type="range" class="form-range max-calc" data-range-group="seo_metrics" min="0" max="1" value="0" step="0.01" id="number_of_visits_range" style="margin-top: -15px;padding: 0">
+                                                    <input type="range" class="form-range max-calc" name="number_of_visits_range" data-range-group="seo_metrics" min="0" max="1" value="0" step="0.01" id="number_of_visits_range" style="margin-top: -15px;padding: 0">
                                                     <span class="current_range_value" data-range-value="number_of_visits_range"></span>
                                                     <div class="form-text" style="margin: 0">Укажите,пожалуйста приоритет показателя.</div>
                                                 </div>
                                                 <div class="form-floating mb-3">
-                                                    <input type="number" class="form-control" id="position_of_the_site_in_the_search_query_input" step="0.01" min="0" max="1" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required>
+                                                    <input type="number" class="form-control" name="position_of_the_site_in_the_search_query_input" id="position_of_the_site_in_the_search_query_input" step="0.01" min="0" max="1" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required>
                                                     <div class="invalid-feedback">
                                                         Пожалуйста, введите число от 0 до 1
                                                     </div>
                                                     <label for="position_of_the_site_in_the_search_query_input">Позиция сайта в поисковом запросе</label>
-                                                    <input type="range" class="form-range max-calc" data-range-group="seo_metrics" min="0" max="1" value="0" step="0.01" id="position_of_the_site_in_the_search_query_range" style="margin-top: -15px;padding: 0">
+                                                    <input type="range" class="form-range max-calc" name="position_of_the_site_in_the_search_query_range" data-range-group="seo_metrics" min="0" max="1" value="0" step="0.01" id="position_of_the_site_in_the_search_query_range" style="margin-top: -15px;padding: 0">
                                                     <span class="current_range_value" data-range-value="position_of_the_site_in_the_search_query_range"></span>
                                                     <div class="form-text" style="margin: 0">Укажите,пожалуйста приоритет показателя.</div>
                                                 </div>
                                                 <div class="form-floating mb-3">
-                                                    <input type="number" class="form-control" id="ctr_input" step="0.01" min="0" max="1" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required>
+                                                    <input type="number" class="form-control" name="ctr_input" id="ctr_input" step="0.01" min="0" max="1" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required>
                                                     <div class="invalid-feedback">
                                                         Пожалуйста, введите число от 0 до 1
                                                     </div>
                                                     <label for="ctr_input">CTR в поисковой выдаче</label>
-                                                    <input type="range" class="form-range max-calc" data-range-group="seo_metrics" min="0" max="1" value="0" step="0.01" id="ctr_range" style="margin-top: -15px;padding: 0">
+                                                    <input type="range" class="form-range max-calc" name="ctr_range" data-range-group="seo_metrics" min="0" max="1" value="0" step="0.01" id="ctr_range" style="margin-top: -15px;padding: 0">
                                                     <span class="current_range_value" data-range-value="ctr_range"></span>
                                                     <div class="form-text" style="margin: 0">Укажите,пожалуйста приоритет показателя.</div>
                                                 </div>
@@ -339,39 +339,39 @@
                                                         </button>
                                                     </div>
                                                     <div style="margin-bottom: 20px">
-                                                        <input type="number" min="0" max="1" step="0.01" value="0" class="form-control range_max_metric_in_group" required>
+                                                        <input type="number" min="0" max="1" step="0.01" value="0" class="form-control range_max_metric_in_group" name="audience_metrics_general_index" required>
                                                         <div class="form-text">Укажите, пожалуйста, вес группы от 0 до 1</div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div>
                                                 <div class="form-floating mb-3">
-                                                    <input type="number" class="form-control" id="failure_rate_input" step="0.01" min="0" max="1" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required>
+                                                    <input type="number" class="form-control" id="failure_rate_input" name="failure_rate_input" step="0.01" min="0" max="1" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required>
                                                     <div class="invalid-feedback">
                                                         Пожалуйста, введите число от 0 до 1
                                                     </div>
                                                     <label for="failure_rate_input">Коэффициент отказов</label>
-                                                    <input type="range" class="form-range max-calc" data-range-group="audience_metrics" min="0" max="1" value="0" step="0.01" id="failure_rate_range" style="margin-top: -15px;padding: 0">
+                                                    <input type="range" class="form-range max-calc" name="failure_rate_range" data-range-group="audience_metrics" min="0" max="1" value="0" step="0.01" id="failure_rate_range" style="margin-top: -15px;padding: 0">
                                                     <span class="current_range_value" data-range-value="failure_rate_range"></span>
                                                     <div class="form-text" style="margin: 0">Укажите,пожалуйста приоритет показателя.</div>
                                                 </div>
                                                 <div class="form-floating mb-3">
-                                                    <input type="number" class="form-control" id="average_time_on_site_input" step="0.01" min="0" max="1" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required>
+                                                    <input type="number" class="form-control" name="average_time_on_site_input" id="average_time_on_site_input" step="0.01" min="0" max="1" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required>
                                                     <div class="invalid-feedback">
                                                         Пожалуйста, введите число от 0 до 1
                                                     </div>
                                                     <label for="average_time_on_site_input">Среднее время на сайте</label>
-                                                    <input type="range" class="form-range max-calc" data-range-group="audience_metrics" min="0" max="1" value="0" step="0.01" id="average_time_on_site_range" style="margin-top: -15px;padding: 0">
+                                                    <input type="range" class="form-range max-calc" name="average_time_on_site_range" data-range-group="audience_metrics" min="0" max="1" value="0" step="0.01" id="average_time_on_site_range" style="margin-top: -15px;padding: 0">
                                                     <span class="current_range_value" data-range-value="average_time_on_site_range"></span>
                                                     <div class="form-text" style="margin: 0">Укажите,пожалуйста приоритет показателя.</div>
                                                 </div>
                                                 <div class="form-floating mb-3">
-                                                    <input type="number" class="form-control" id="view_depth_input" step="0.01" min="0" max="1" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required>
+                                                    <input type="number" class="form-control" id="view_depth_input" name="view_depth_input" step="0.01" min="0" max="1" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required>
                                                     <div class="invalid-feedback">
                                                         Пожалуйста, введите число от 0 до 1
                                                     </div>
                                                     <label for="view_depth_input">Глубина просмотра</label>
-                                                    <input type="range" class="form-range max-calc" data-range-group="audience_metrics" min="0" max="1" value="0" step="0.01" id="view_depth_range" style="margin-top: -15px;padding: 0">
+                                                    <input type="range" class="form-range max-calc" name="view_depth_range" data-range-group="audience_metrics" min="0" max="1" value="0" step="0.01" id="view_depth_range" style="margin-top: -15px;padding: 0">
                                                     <span class="current_range_value" data-range-value="view_depth_range"></span>
                                                     <div class="form-text" style="margin: 0">Укажите,пожалуйста приоритет показателя.</div>
                                                 </div>
@@ -579,13 +579,13 @@
                                                         <p>Время до первого байта (TTFB) — это основополагающий показатель для измерения времени установки соединения и скорости реагирования веб-сервера как в лаборатории, так и в полевых условиях. Это помогает определить, когда веб-сервер слишком медленно отвечает на запросы. В случае запросов навигации, то есть запросов HTML-документа, он предшествует любому другому значимому показателю производительности загрузки.</p>
                                                         <p>Минимальное значение: 0</p>
                                                         <p>Максимальное значение: 1</p>
-                                                        <button type="button" data-data_additional_metric='{"name": "TTFB значение", "minValue": "0", "maxValue": "1", "group" : "technical_metrics"}' class="btn btn-outline-success btn_add_in_group">Добавить показатель</button>
+                                                        <button type="button" data-data_additional_metric='{"type": "ttfb","name": "TTFB", "minValue": "0", "maxValue": "1", "group" : "technical_metrics"}' class="btn btn-outline-success btn_add_in_group">Добавить показатель</button>
                                                     </div>
                                                     <div class="tab-pane fade" id="list-base_templates_technical_metrics-fcp" role="tabpanel" aria-labelledby="item_base_templates_technical_metrics-fcp-list">
                                                         <p>First Contentful Paint (FCP) — это важный, ориентированный на пользователя показатель для измерения воспринимаемой скорости загрузки . Он отмечает первую точку на временной шкале загрузки страницы, где пользователь может видеть что-либо на экране. Быстрый FCP помогает убедить пользователя в том, что что-то происходит .</p>
                                                         <p>Минимальное значение: 0</p>
                                                         <p>Максимальное значение: 1</p>
-                                                        <button type="button" data-data_additional_metric='{"name": "FCP значение", "minValue": "0", "maxValue": "1", "group" : "technical_metrics"}' class="btn btn-outline-success btn_add_in_group">Добавить показатель</button>
+                                                        <button type="button" data-data_additional_metric='{"type": "fcp", "name": "FCP", "minValue": "0", "maxValue": "1", "group" : "technical_metrics"}' class="btn btn-outline-success btn_add_in_group">Добавить показатель</button>
                                                     </div>
                                                 </div>
                                                 <div class="tab-content" data-group="seo_metrics" id="nav-list_base_templates_seo_metrics-tabContent" style="display: none">
@@ -620,9 +620,20 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane fade show" id="nav-custom_templates_metrics" role="tabpanel" aria-labelledby="nav-custom-templates-tab" tabindex="0">
-                                        <div id="tab_base_technical_metrics" data-group="technical_metrics" style="display: none"></div>
-                                        <div id="tab_base_seo_metrics" data-group="seo_metrics" style="display: none"></div>
-                                        <div id="tab_base_audience_metrics" data-group="audience_metrics" style="display: none"></div>
+                                        <div id="tab_custom_metrics">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <div class="list-group" data-group="technical_metrics" id="list_custom_templates_technical_metrics" role="tablist" style="display: none"></div>
+                                                    <div class="list-group" id="list-tab" data-group="list_custom_templates_seo_metrics" role="tablist" style="display: none"></div>
+                                                    <div class="list-group" id="list-tab" data-group="list_custom_templates_audience_metrics" role="tablist" style="display: none"></div>
+                                                </div>
+                                                <div class="col-8">
+                                                    <div class="tab-content" data-group="technical_metrics" id="nav-list_custom_templates_technical_metrics-tabContent" style="display: none"></div>
+                                                    <div class="tab-content" data-group="seo_metrics" id="nav-list_custom_templates_seo_metrics-tabContent" style="display: none"></div>
+                                                    <div class="tab-content" data-group="audience_metrics" id="nav-list_custom_templates_audience_metrics-tabContent" style="display: none"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="tab-pane fade" id="nav-create_new_metric" role="tabpanel" aria-labelledby="nav-create_new_metric-tab" tabindex="0">
                                         <form id="form_create_new_metric" class="was-validated">
@@ -724,9 +735,11 @@
             $(this).attr('max', (1 - sumOfOthers).toFixed(2));
         });
 
-        // $('#form_seo_calc_btn_sbtn').on("submit", function (e){
-        //     e.preventDefault();
-        // });
+        $('#form_seo_calc').on("submit", function (e){
+            e.preventDefault();
+            var formData = $(this).serializeArray();
+            console.log(formData);
+        });
 
         $('#form_create_new_metric').on("submit",function (e){
             e.preventDefault();
@@ -738,23 +751,23 @@
             let description = formData[5]['value'];
             let fakeId = Math.random().toString(16).slice(2);
 
-            let list = `<a class="list-group-item list-group-item-action" id="item_base_templates_${group}-${fakeId}-list" data-bs-toggle="list" href="#list-base_templates_${group}-${fakeId}" role="tab" aria-controls="list-base_templates_${group}-test4">${title}</a>`;
-            let html = `<div class="tab-pane fade" id="list-base_templates_${group}-${fakeId}" role="tabpanel" aria-labelledby="item_base_templates_${group}-${fakeId}-list"><p>${description}</p><p>Минимальное значение: ${minValue}</p><p>Максимальное значение: ${maxValue}</p><button type="button" data-data_additional_metric='{"name": "${title}", "minValue": "${minValue}", "maxValue": "${maxValue}", "group" : "${group}"}' class="btn btn-outline-success btn_add_in_group">Добавить показатель</button></div>`;
+            let list = `<a class="list-group-item list-group-item-action" id="item_custom_templates_${group}-${fakeId}-list" data-bs-toggle="list" href="#list-custom_templates_${group}-${fakeId}" role="tab" aria-controls="list-custom_templates_${group}-${fakeId}">${title}</a>`;
+            let html = `<div class="tab-pane fade" id="list-custom_templates_${group}-${fakeId}" role="tabpanel" aria-labelledby="item_custom_templates_${group}-${fakeId}-list"><p>${description}</p><p>Минимальное значение: ${minValue}</p><p>Максимальное значение: ${maxValue}</p><button type="button" data-data_additional_metric='{"name": "${title}", "minValue": "${minValue}", "maxValue": "${maxValue}", "group" : "${group}"}' class="btn btn-outline-success btn_add_in_group">Добавить показатель</button></div>`;
 
             if (group === "technical_metrics"){
-                $('#list_base_templates_technical_metrics').append(list);
-                $('#nav-list_base_templates_technical_metrics-tabContent').append(html);
+                $('#list_custom_templates_technical_metrics').append(list);
+                $('#nav-list_custom_templates_technical_metrics-tabContent').append(html);
             }
             if (group === "seo_metrics"){
-                $('#list_base_templates_seo_metrics').append(list);
-                $('#nav-list_base_templates_seo_metrics-tabContent').append(html);
+                $('#list_custom_templates_seo_metrics').append(list);
+                $('#nav-list_custom_templates_seo_metrics-tabContent').append(html);
             }
             if (group === "audience_metrics"){
-                $('#list_base_templates_audience_metrics').append(list);
-                $('#nav-list_base_templates_audience_metrics-tabContent').append(html);
+                $('#list_custom_templates_audience_metrics').append(list);
+                $('#nav-list_custom_templates_audience_metrics-tabContent').append(html);
             }
 
-            $(`#list-base_templates_${group}-${fakeId} button.btn_add_in_group`).on('click', function (){
+            $(`#list-custom_templates_${group}-${fakeId} button.btn_add_in_group`).on('click', function (){
                 addItemInGroup.call(this, this);
             });
 
@@ -766,6 +779,11 @@
             $("#" + parentId).remove();
         }
 
+        const idBaseTemplates = {
+            "ttfb" : "ttfb_base_template",
+            "fcp" : "fcp_base_template"
+        }
+
         function addItemInGroup(el){
             let data = $(el).data('data_additional_metric');
             let btn = $(el);
@@ -773,7 +791,14 @@
             let seo_metrics_group = $('#additional_seo_metrics');
             let audience_metrics_group = $('#additional_audience_metrics');
             let fakeId = Math.random().toString(16).slice(2);
-            let html = `<div class="form-floating mb-3" id="${fakeId}_addional_item"> <input type="number" class="form-control" id="${fakeId}_input" step="0.01" min="${data['minValue']}" max="${data['maxValue']}" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required> <div class="invalid-feedback">Пожалуйста, введите число от ${data['minValue']} до ${data['maxValue']} </div> <label for="${fakeId}_input">${data['name']}</label> <input type="range" class="form-range max-calc" data-range-group="${data['group']}" min="0" max="1" value="0" step="0.01" id="${fakeId}_range" style="margin-top: -15px;padding: 0"> <span class="current_range_value" data-range-value="${fakeId}_range"></span> <div class="form-text" style="margin: 0">Укажите,пожалуйста приоритет показателя.</div> <button type="button" id="${fakeId}_btn_remove_additional_metric" class="btn btn-danger btn-sm remove_additional_metric">Исключить показатель</button> </div>`;
+            let html = '';
+
+            if (data['type']){
+                html = `<div class="form-floating mb-3" id="${idBaseTemplates[data['type']]}_addional_item"> <input type="number" class="form-control" name="${idBaseTemplates[data['type']]}_input" id="${idBaseTemplates[data['type']]}_input" step="0.01" min="${data['minValue']}" max="${data['maxValue']}" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required> <div class="invalid-feedback">Пожалуйста, введите число от ${data['minValue']} до ${data['maxValue']} </div> <label for="${idBaseTemplates[data['type']]}_input">${data['name']}</label> <input type="range" class="form-range max-calc" data-range-group="${data['group']}" min="0" max="1" value="0" step="0.01" name="${idBaseTemplates[data['type']]}_range" id="${idBaseTemplates[data['type']]}_range" style="margin-top: -15px;padding: 0"> <span class="current_range_value" data-range-value="${idBaseTemplates[data['type']]}_range"></span> <div class="form-text" style="margin: 0">Укажите,пожалуйста приоритет показателя.</div> <button type="button" id="${idBaseTemplates[data['type']]}_btn_remove_additional_metric" class="btn btn-danger btn-sm remove_additional_metric">Исключить показатель</button> </div>`;
+            }
+            else{
+                html = `<div class="form-floating mb-3" id="${fakeId}_addional_item"> <input type="number" class="form-control" name="${fakeId}_input" id="${fakeId}_input" step="0.01" min="${data['minValue']}" max="${data['maxValue']}" value="0" style="border-bottom: 0px; border-radius: 10px 10px 0 0; margin: 0;height: 50px" placeholder="0" required> <div class="invalid-feedback">Пожалуйста, введите число от ${data['minValue']} до ${data['maxValue']} </div> <label for="${fakeId}_input">${data['name']}</label> <input type="range" class="form-range max-calc" data-range-group="${data['group']}" min="0" max="1" value="0" step="0.01" name="${fakeId}_range" id="${fakeId}_range" style="margin-top: -15px;padding: 0"> <span class="current_range_value" data-range-value="${fakeId}_range"></span> <div class="form-text" style="margin: 0">Укажите,пожалуйста приоритет показателя.</div> <button type="button" id="${fakeId}_btn_remove_additional_metric" class="btn btn-danger btn-sm remove_additional_metric">Исключить показатель</button> </div>`;
+            }
 
             if (data['group'] === "technical_metrics"){
                 technical_metrics_group.append(html);
